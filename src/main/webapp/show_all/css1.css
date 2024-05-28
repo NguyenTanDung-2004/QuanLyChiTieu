@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body .right1{
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+body .right1 .title{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    color: #0B0964;
+}
+:root{
+    --text-dashboard-color: black;
+    --dashboard-color: #baddff;
+    --background-right: #F8F9F9;
+    --point-button-darkmode: #19609F;
+    --button-darkmode: #DEEDFA;
+    --color-tag-hover: #DFF5FF;
+    --color-in-ernergy: #353E55;
+    --shadow: #adb5bd;
+    --color-border-chart: #baddff;
+    --hover-parent-item: #e5e5e5;
+}
+body .right1 .date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+}
+body .righ1 .main{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+body .right1 .main .main_child{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: start;
+}
+body .right1 .main .left{
+}
+body .right1 .main .right{
+}
+body .right1 .main .main_child .parent_item{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body .right1 .main .main_child .parent_item .parent_item1{
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 0 5px 1px var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    padding-bottom: 30px;
+}
+body .right1 .main .main_child .parent_item .parent_item1 .left2 p{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+    font-style: initial;
+}
+body .right1 .main .main_child .parent_item1:hover{
+    background-color: var(--hover-parent-item);
+}
+body .right1 .main .main_child .parent_item .left2{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+body .right1 .main .main_child .parent_item .left2 img{
+    height: 30px;
+    width: 30px;
+}
+body .right1 .main .main_child .parent_item .right2{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    bottom: 10px;
+}
+body .right1 .main .main_child .parent_item .add{
+    font-size: 20px;
+    color: var(--point-button-darkmode);
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 50%;
+    transform: translateY(15px);
+    right: 10px;
+}
+body .right1 .main .main_child .parent_item .add:hover{
+    background-color: white;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1{
+    min-height: 300px;
+    width: 90%;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid black;
+    border-top: none;
+    padding-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow: auto;
+    max-height: 300px;
+}
+  body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+  }
+
+  body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll::-webkit-scrollbar-track {
+    background: white; /* Background of the track */
+  }
+
+  body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll thumb */
+    border-radius: 6px; /* Rounded corners for the thumb */
+  }
+
+  body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color on hover */
+  }
+body .right1 .main .main_child .parent_item .detail_parent_item1 .detail_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1 .detail_item p{
+    font-style: initial;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1 .scroll .line{
+    min-height: 0.5px;
+    width: 90%;
+    background-color: black;
+}
+/*add expense*/
+body .add_expense_box{
+    position: fixed;
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    top: calc(50vh - 150px);
+    left: calc(50vw - 150px);
+    z-index: 100;
+    border-radius: 10px;
+    box-shadow: 1px 0 5px 1px var(--shadow);
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    transition: 0.3s;
+    scale: 0;
+}
+body .blur1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(5px);
+    display: none;
+}
+
+body .add_expense_box i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px; 
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+body .add_expense_box i:hover{
+    background-color: gray;
+}
+body .add_expense_box .title p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Itim", cursive;
+    margin-bottom: 20px;
+}
+body .add_expense_box .input{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+body .add_expense_box .input .input_child{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+body .add_expense_box .input .add_or_subtract{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+body .add_expense_box .input .add_or_subtract .child{
+    display: flex;
+    gap: 5px;
+}
+body .add_expense_box .input .input_child input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+body .add_expense_box .input .input_child .left{
+    min-width: 60px;
+    max-width: 60px;
+}
+body .add_expense_box button{
+    padding: 5px 15px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--dashboard-color);
+    box-shadow: 1px 1px 1px 1px var(--shadow);
+    width: fit-content;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.5;
+}
+body .add_expense_box button:hover{
+    background-color: var(--point-button-darkmode);
+    color: white;
+}
+body .add_expense_box .contain_button{
+    position: relative;
+}
+body .add_expense_box .on_button{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+body .add_expense_box .contain_button p{
+    position: absolute;
+    width: 200px;
+    left: 0;
+    transform: translate(-50px);
+    margin-top: 10px;
+    color: var(--point-button-darkmode);
+}
+body .add_expense_box .input .date input{
+    font-size: 14px !important;
+    border: none;
+    border-bottom: 1px solid black;
+}
+body .right1 .left p{
+	font-style: initial;
+}
+
+body .right1 .main .main_child .parent_item .detail_parent_item1 .detail_item .right3{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1 .detail_item .right3 i{
+    cursor: pointer;
+    transition: 0.3s;
+}
+body .right1 .main .main_child .parent_item .detail_parent_item1 .detail_item .right3 i:hover{
+    scale: 1.2;
+}
+
+#box_update .contain_button{
+    display: flex;
+    gap: 20px;
+}
+#delete_button{
+    background-color: red;
+    opacity: 1;
+    z-index: 101;
+}
+#delete_button:hover{
+    background-color: #ef233c;
+}
+body .confirm_delete{
+    position: fixed;
+    height: 100px;
+    width: 200px;
+    background-color: white;
+    top: calc(50vh - 50px);
+    left: calc(50vw - 100px);
+    z-index: 102;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 1px 0 5px 1px var(--shadow);
+    scale: 0;
+    transition: 0.3s;
+}
+body .confirm_delete p{
+    text-align: center;
+}
+body .confirm_delete .button{
+    display: flex;
+    gap: 10px;
+}
+body .confirm_delete button{
+    padding: 3px 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-border-chart);
+    box-shadow: 1px 0 1px 1px var(--shadow);
+    cursor: pointer;
+}
+#box_update .contain_button{
+    position: relative;
+}
+#reset_success{
+    position: absolute;
+    left: 65px;
+    bottom: -30px;
+}
