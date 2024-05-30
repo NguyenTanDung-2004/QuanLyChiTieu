@@ -120,4 +120,61 @@ public class interact_with_project {
         } 
         return result;
 	}
+	public List<List<Object>> all_project_of_user(int user_id){
+		List<List<Object>> list = new ArrayList<List<Object>>();
+		 try {
+		        Statement statement = connect.createStatement();
+		        String sql = "select name, max_money, from_date, end_date, project.project_id from project inner join user_project on project.project_id = user_project.project_id\r\n"
+		        		+ "where user_id = " + user_id;
+		        ResultSet resultSet = statement.executeQuery(sql);
+		        while (resultSet.next()) {
+		        	List<Object> list1 = new ArrayList<Object>();
+		        	list1.add(resultSet.getString(1));
+		        	list1.add(resultSet.getFloat(2));
+		        	list1.add(resultSet.getDate(3) + "") ;
+		        	list1.add(resultSet.getDate(4) + "");
+		        	list1.add(resultSet.getInt(5) + "");
+		        	list.add(list1);
+		        }
+		        resultSet.close();
+		        statement.close();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+		 return list;
+	}
+	public void update_project(int project_id, String name, float money, String end_date) {
+		try {
+            PreparedStatement statement = connect.prepareStatement("update project \r\n"
+            		+ "set project.name = ?, project.max_money = ?, project.end_date = ?\r\n"
+            		+ "where project_id = " + project_id);
+            statement.setString(1, name);
+            statement.setFloat(2, money);
+            statement.setString(3, end_date);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+	}
+	public int get_project_with_max_end_date(int user_id) {
+		int result = 0;
+		 try {
+		        Statement statement = connect.createStatement();
+		        String sql = "select project.project_id from project inner join user_project on project.project_id = user_project.project_id\r\n"
+		        		+ "where project.end_date = (\r\n"
+		        		+ "	select max(end_date) from project inner join user_project on project.project_id = user_project.project_id\r\n"
+		        		+ ") and user_project.user_id = " + user_id;
+		        ResultSet resultSet = statement.executeQuery(sql);
+		        while (resultSet.next()) {
+		        	result = resultSet.getInt(1);
+		        	break;
+		        }
+		        resultSet.close();
+		        statement.close();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+		 return result;
+	}
 }

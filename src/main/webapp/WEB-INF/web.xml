@@ -67,4 +67,24 @@
  	<servlet-name>servlet_handle_request_from_show_all</servlet-name>
  	<url-pattern>/servlet_handle_request_from_show_all</url-pattern>
  </servlet-mapping>
+ 
+ <!-- servlet_history -->
+ <servlet>
+ 	<servlet-name>servlet_dispatcher_history</servlet-name>
+ 	<servlet-class>servlet.servlet_dispatcher_history</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>servlet_dispatcher_history</servlet-name>
+ 	<url-pattern>/history</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- servlet_handle_request_from_history -->
+ <servlet>
+ 	<servlet-name>servlet_handle_request_from_history</servlet-name>
+ 	<servlet-class>servlet.servlet_handle_request_from_history</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>servlet_handle_request_from_history</servlet-name>
+ 	<url-pattern>/servlet_handle_request_from_history</url-pattern>
+ </servlet-mapping>
 </web-app>

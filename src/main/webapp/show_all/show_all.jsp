@@ -432,5 +432,6 @@
         <script src="/QuanLyChiTieu/show_all/add_item.js"></script>
         <script src="/QuanLyChiTieu/show_all/set_up_item.js"></script>
         <script src="/QuanLyChiTieu/show_all/click_setup_item.js"></script>
+        <script src="/QuanLyChiTieu/show_all/change_tab.js"></script>
     </body>
 </html>
