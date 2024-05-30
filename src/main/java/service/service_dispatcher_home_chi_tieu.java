@@ -53,5 +53,14 @@ public class service_dispatcher_home_chi_tieu {
 		intertact_with_item obj = new intertact_with_item();
 		return obj.money_of_date_in_week(user_id, project_id);
 	}
+	public static void set_session_for_project_id(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession();
+		if (service_dispatcher_home_chi_tieu.check_if_user_have_project(req, resp) == 1 && session.getAttribute("home_chi_tieu_from_history") == null) {
+			interact_with_project obj = new interact_with_project();
+			int user_id = (Integer)session.getAttribute("user_id");
+			int project_id = obj.get_project_with_max_end_date(user_id);
+			session.setAttribute("project_id", project_id);
+		}
+	}
 	
 }

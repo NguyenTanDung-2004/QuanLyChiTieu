@@ -95,11 +95,6 @@
                         <p>History</p>
                         <div class="point"></div>
                     </div>
-                    <div class="All tag1">
-                        <i class="fa-solid fa-clock"></i>
-                        <p>Activities</p>
-                        <div class="point"></div>
-                    </div>
                 </div>
                 <div class="dark_mode">
                     <i class="fa-solid fa-moon"></i>
@@ -351,10 +346,15 @@
 			var max_and_current_money = <%=max_and_current_money%>;
 			var week = <%=convert_JavaObject_to_Json.convertObjectToJson(week)%>
 			var money_in_week = <%=convert_JavaObject_to_Json.convertObjectToJson(money_in_week)%>
+			var home_tag = document.querySelector("body .left1 .tags .tag .home");
+			home_tag.style.backgroundColor = "#F8F9F9";
+			var home_point = document.querySelector("body .left1 .tags .tag .home .point");
+			home_point.style.display = "block";
 		</script>
         <script src="/QuanLyChiTieu/home_chi_tieu/Dung/home_chi_tieu.js"></script>
         <script src="/QuanLyChiTieu/home_chi_tieu/Dung/home.js"></script>
         <script src="/QuanLyChiTieu/home_chi_tieu/Dung/set_up_home_chi_tieu.js"></script>
         <script src="/QuanLyChiTieu/home_chi_tieu/Dung/set_up_chart.js"></script>
+        <script src="/QuanLyChiTieu/home_chi_tieu/change_tab.js"></script>
     </body>
 </html>

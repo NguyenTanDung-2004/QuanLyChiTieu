@@ -43,4 +43,44 @@ public class interact_with_user_project {
         } 
 		
 	}
+	public void delete_user_project(int project_id) {
+		try {
+            PreparedStatement statement = connect.prepareStatement("delete from user_project \r\n"
+            		+ "where user_project.project_id = " + project_id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+	}
+	public void delete_user_item(int project_id) {
+		try {
+            PreparedStatement statement = connect.prepareStatement("delete from user_item \r\n"
+            		+ "where user_item.project_id = " + project_id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+	}
+	public void delete_user_parent_item(int project_id) {
+		try {
+            PreparedStatement statement = connect.prepareStatement("delete from user_parent_item \r\n"
+            		+ "where user_parent_item.project_id = " + project_id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+	}
+	public void delete_project(int project_id) {
+		try {
+            PreparedStatement statement = connect.prepareStatement("delete from project \r\n"
+            		+ "where project.project_id = " + project_id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+	}
 }

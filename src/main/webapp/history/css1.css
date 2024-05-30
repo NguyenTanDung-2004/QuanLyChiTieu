@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body .right1 .title{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    color: #0B0964;
+}
+:root{
+    --text-dashboard-color: black;
+    --dashboard-color: #baddff;
+    --background-right: #F8F9F9;
+    --point-button-darkmode: #19609F;
+    --button-darkmode: #DEEDFA;
+    --color-tag-hover: #DFF5FF;
+    --color-in-ernergy: #353E55;
+    --shadow: #adb5bd;
+    --color-border-chart: #baddff;
+}
+.create_new_project{
+    margin-top: 50px;
+    max-width: 180px;
+    max-height: 150px;
+}
+.create_new_project p{
+    transform: translateY(50px);
+    margin-left: 16px;
+}
+
+
+body .right1 .main{
+    padding-top: 0;
+}
+.main_1{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    overflow-y: auto;
+    padding-top: 20px;
+    max-height: 70%;
+    min-width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+    padding-right: 10px;
+}
+.main_1 .main_child{
+    min-height: 150px;
+    max-height: 150px;
+    width: 180px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 0 5px 1px var(--shadow);
+    justify-content: center;
+    border-radius: 10px;
+    font-family: "Baloo 2", sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.main_1 .main_child:hover{
+    background-color: #baddff;
+}
+.main_1 .main_child .date_money .contain .point{
+    height: 5px;
+    width: 5px;
+    background-color: var(--point-button-darkmode);
+    border-radius: 50%;
+}
+.main_1 .main_child .date_money .contain{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#name_project_history{
+    color: var(--point-button-darkmode);
+    font-weight: 900;
+}
+
+.create_project_box .button{
+    display: flex;
+    gap: 10px;
+}
+#delete{
+    background-color: red;
+    color: white;
+}
