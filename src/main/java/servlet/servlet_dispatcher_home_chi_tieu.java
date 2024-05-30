@@ -20,8 +20,13 @@ public class servlet_dispatcher_home_chi_tieu extends HttpServlet{
 		req.setAttribute("have_project", service_dispatcher_home_chi_tieu.check_if_user_have_project(req, resp));
 		//set session project_id
 		service_dispatcher_home_chi_tieu.set_session_for_project_id(req, resp);
+		if (service_dispatcher_home_chi_tieu.check_if_user_have_project(req, resp) == 0) {
+			req.removeAttribute("project_id");
+			System.out.println("nguyentandung1234");
+		}
 		// get data
-		if (session.getAttribute("project_id") != null) {
+		else {
+			System.out.println("lenguyenhonghan");
 			req.setAttribute("date_from_end", service_dispatcher_home_chi_tieu.get_date_from_end(req, resp));
 			
 			// max and current money

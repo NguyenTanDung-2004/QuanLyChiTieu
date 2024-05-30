@@ -55,15 +55,9 @@ public class service_handle_request_in_login {
 			send_response("password", resp);
 			return;
 		}
-		send_response("successfully", resp);
 		HttpSession session = req.getSession();
 		session.setAttribute("user_id", obj.get_id_user(email));
-		interact_with_project obj1 = new interact_with_project();
-		if (obj1.get_max_project_id_of_user(obj.get_id_user(email)) > 0) {
-			session.setAttribute("project_id", obj.get_id_user(email));
-		}
-		System.out.println(session.getAttribute("user_id"));
-		System.out.println(session.getAttribute("project_id"));
+		send_response("successfully", resp);
 	}
 	
 	public static void check_email_forgot(HttpServletResponse resp, HttpServletRequest req) {
