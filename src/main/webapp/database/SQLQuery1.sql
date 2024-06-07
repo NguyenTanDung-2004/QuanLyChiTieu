@@ -109,18 +109,13 @@ create table notify(
 	user_id int not null primary key, -- 1
 	others_user_id nvarchar(max), -- (30 11 20 30 40)
 	flag int, -- (1) or (0) -- nếu là 1 thì có nghĩa là chưa xem, nếu là 0 là xem rồi.
+);
+drop table notify;
+-- sửa thành 
+create table notify(
+	user_id int not null, -- 1
+	others_user_id int, -- (30)
+	date smalldatetime not null,
+	flag int, -- (1) or (0) -- nếu là 1 thì có nghĩa là chưa xem, nếu là 0 là xem rồi.
+	primary key(user_id, others_user_id, date)
 )
-
--- update notify 
--- set notify.others_user_id = 30 + " " + notify.others_user_id
--- where notify.user_id = 1
-
--- khi nguoi dung tao tai khoan, tu dong se tao mot row trong notify 
--- nguoi dung tao tai khoan voi id = 1 thi trong notify tu dong tao ra 
--- 1; ""; 0
-
--- khi nguoi dung (user_id = 2) tag user_id = 1 vao thi 
--- 1; "4 3 2"; 1
-
--- khi nguoi dung (user_id = 1) click vao bieu tuong thong bao thi 
--- 1; "2"; 0
