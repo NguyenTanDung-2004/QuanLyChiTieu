@@ -43,10 +43,6 @@ public class service_handle_request_from_history {
 		obj.delete_user_item(project_id);
 		obj.delete_user_parent_item(project_id);
 		obj.delete_project(project_id);
-		HttpSession session = req.getSession();
-		if ((Integer)session.getAttribute("project_id") != null && (Integer)session.getAttribute("project_id") == project_id) {
-			session.removeAttribute("project_id");
-		}
 		send_response("successfully", resp);
 	}
 	public static void choose_project(HttpServletRequest req, HttpServletResponse resp) {

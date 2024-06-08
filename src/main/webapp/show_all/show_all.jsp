@@ -426,6 +426,7 @@
         <script type="text/javascript">
         	var date_from_end = <%=convert_all_data_to_Json(date)%>;
         	var all_data = <%=convert_all_data_to_Json(all_data)%>;
+        	console.log(all_data)
         </script>
 
         <script src="/QuanLyChiTieu/show_all/front_end.js"></script>
