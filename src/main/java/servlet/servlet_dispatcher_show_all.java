@@ -15,6 +15,8 @@ import service.service_dispatcher_show_all;
 public class servlet_dispatcher_show_all extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+    	resp.setCharacterEncoding("UTF-8");
 		//create first item 
 		req.setAttribute("current_total_money_of_parent_item", service_dispatcher_show_all.current_total_money_of_parent_item(req, resp));
 		// get all data

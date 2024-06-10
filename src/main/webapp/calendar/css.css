@@ -165,6 +165,9 @@ body .right1 .top{
     padding-left: 20px;
     justify-content: space-between;
 }
+
+
+/* notify */
 body .right1 .top .right{
     display: flex;
     align-items: center;
@@ -188,7 +191,6 @@ body .right1 .top .right .avatar {
     object-fit: cover;
   }
 
-/* notify */
 @keyframes headerNotifyGrowth {
     from {
         opacity: 0;

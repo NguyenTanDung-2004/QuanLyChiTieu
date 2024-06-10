@@ -120,13 +120,15 @@ public class interact_with_user_parent_item {
         try {
             Statement statement = connect.createStatement();
             String sql = 
-            		"select item.info, item.money, item.date, item.type, item.item_id\r\n"
-            		+ "from user_parent_item inner join parent_item \r\n"
-            		+ "		on user_parent_item.parent_item_id = parent_item.parent_item_id\r\n"
-            		+ "	inner join item \r\n"
-            		+ "		on parent_item.parent_item_id = item.parent_item_id\r\n"
-            		+ "where user_parent_item.user_id = " + user_id + " and project_id = " + project_id + " and user_parent_item.parent_item_id = " + parent_item_id
-            		+ "order by item.date";
+//            		"select item.info, item.money, item.date, item.type, item.item_id\r\n"
+//            		+ "from user_parent_item inner join parent_item \r\n"
+//            		+ "		on user_parent_item.parent_item_id = parent_item.parent_item_id\r\n"
+//            		+ "	inner join item \r\n"
+//            		+ "		on parent_item.parent_item_id = item.parent_item_id\r\n"
+//            		+ "where user_parent_item.user_id = " + user_id + " and project_id = " + project_id + " and user_parent_item.parent_item_id = " + parent_item_id
+//            		+ "order by item.date";
+            		"select item.info, item.money, item.date, item.type, item.item_id from user_item inner join item on user_item.item_id = item.item_id \r\n"
+            		+ "where user_item.user_id = " + user_id + " and user_item.project_id = " + project_id + " and item.parent_item_id = " + parent_item_id;
             		
             
             ResultSet resultSet = statement.executeQuery(sql);
