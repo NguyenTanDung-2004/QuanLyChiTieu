@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -197,4 +199,38 @@ public class interact_with_project {
 		 return name;
 	}
 	//giang
+	
+	//QA
+	//all_detail_product
+		public ArrayList<String> get_detail_project_for_report(int project_id){
+			ArrayList<String> detail_report = new ArrayList<String>();
+			try {
+		        String sql = "SELECT * FROM project WHERE project_id = ?";
+		        PreparedStatement statement = connect.prepareStatement(sql);
+		        statement.setInt(1, project_id);
+		        ResultSet resultSet = statement.executeQuery();
+		        
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		        DecimalFormat decimalFormat = new DecimalFormat("#");
+		        
+		        while (resultSet.next()) {
+		        	String projectId = String.valueOf(resultSet.getInt("project_id"));
+		        	String nameProject = String.valueOf(resultSet.getString("name"));
+		        	String moneyProject = decimalFormat.format(resultSet.getFloat("max_money"));
+		        	String fromdateProject = dateFormat.format(resultSet.getDate("from_date"));
+		            String enddateProject = dateFormat.format(resultSet.getDate("end_date"));
+		            
+		        	detail_report.add(projectId);
+		        	detail_report.add(nameProject);
+		        	detail_report.add(moneyProject);
+		        	detail_report.add(fromdateProject);
+		        	detail_report.add(enddateProject);
+		        }
+		        resultSet.close();
+		        statement.close();
+			}catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+			return detail_report;
+		}
 }

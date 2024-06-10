@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 100vh;
+    background-color: var(--point-button-darkmode);
+}
+:root{
+    --text-dashboard-color: black;
+    --dashboard-color: #baddff;
+    --background-right: #F8F9F9;
+    --point-button-darkmode: #19609F;
+    --button-darkmode: #DEEDFA;
+    --color-tag-hover: #DFF5FF;
+    --color-in-ernergy: #353E55;
+    --shadow: #adb5bd;
+    --color-border-chart: #baddff;
+}
+
+/*Quynh Anh*/
+/*title: FORUM*/
+
+body .right1 .main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 83%;
+    padding-top: 46px;
+    padding-left: 20px;
+    gap: 24px;
+    overflow-y: auto;
+} 
+.main .title{
+    display: flex;
+    padding-right: 80px;
+    height: 6%;
+}
+.main .title .titleName{
+    flex: 1;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0B0964;
+}
+.main .title .titleTime {
+    flex: 0;
+    display: flex;
+    font-size: 22px;
+    font-weight: 500;
+    color: #0B0964;
+    gap: 15px;
+    cursor: pointer;
+    padding-right: 52px;
+}
+.titleTime p{
+    height:26px;
+    width: 165px;
+    align-content: center;
+    justify-items: center;
+    background: transparent;
+    border: none;
+}
+#date{
+    padding: 5px 5px;
+    outline: none;
+    border: none;
+    font-family: "Sanchez", serif;
+    font-size: 18px;
+    background:none;
+    cursor:pointer;
+}
+.main .title .fa-solid{
+    font-size: 26px;
+    padding: 0px 16px;
+    cursor: pointer;
+}
+/*Content of FORUM*/
+.main .mainScroll{
+    display: flex;
+    overflow-y: scroll;
+    gap: 50px;
+    flex-direction: column;
+    height: 90%;
+}
+
+.contentForum1, .contentForum2{
+    display: flex;
+    flex-direction: column;
+    width: 94%;
+    max-height: fit-content;
+    gap: 20px;
+}
+.parent{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 40px;
+    border-radius:5px;
+    border: 0.15px solid #0b0964;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    height: 168px;
+    justify-content: center;
+}
+.infoUser{
+    display: flex;
+}
+.infoUser img{
+    border-radius: 120px;
+    height: 48px;
+    width: 48px;
+}
+.infoUser p{
+    display:flex;
+    font-size: 20px;
+    font-weight: 600;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    color: #0B0964;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 60px;
+}
+.content p{
+    font-size: 18px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.other{
+    display: flex;
+    width: 88%;
+    margin-left: 60px;
+}
+.other1 {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+.other1 p{
+    font-size: 16px;
+    font-style: italic;
+}
+.lineTime{
+    display: flex;
+    margin-left: 20px;
+}
+.other1 img{
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.likes{
+    margin-left: 6px;
+}
+.other button{
+    flex: 0;
+    background-color: transparent;
+    border: 1px solid #0B0964;
+    border-radius: 20px;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+.childUser {
+    display: block;
+    padding: 20px;
+    
+}
+.child{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 40px;
+    height:max-content;
+    padding-left: 96px;
+    margin-bottom: 20px;
+}
+.answer {
+    display: flex;
+    padding: 0 58px;
+}
+.answer input{
+    background-color: transparent;
+    border:0.1px solid #0B0964;
+    border-radius: 6px;
+    height: 34px;
+    width: 100%;
+    z-index: 1;
+    font-size: 18px;
+    padding-left: 10px;
+}
+.answer .fa-regular{
+    display: flex;
+    z-index: 2;
+    margin-left: -42px;
+    padding: 8px;
+    cursor: pointer;
+}
+/*Create Parent FORUM*/
+.createParent{
+    display: flex;
+    padding: 10px;
+    height:8%;
+}
+.createParent input{
+    background-color: transparent;
+    border:0.1px solid #0B0964;
+    border-radius: 6px;
+    height: 34px;
+    width: 90%;
+    z-index: 1;
+    padding-left: 10px;
+    font-size: 18px;
+}
+.createParent i{
+    display: flex;
+    z-index: 2;
+    margin-left: -42px;
+    padding: 8px;
+    cursor: pointer;
+}

@@ -1,3 +1,4 @@
+
 <%@page import="utils.convert_JavaObject_to_Json"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; UTF-8"
@@ -50,11 +51,6 @@
                     <div class="history tag1">
                         <i class="fa-solid fa-clock"></i>
                         <p>History</p>
-                        <div class="point"></div>
-                    </div>
-                    <div class="Report tag1">
-                        <i class="fa-solid fa-clock"></i>
-                        <p>Report</p>
                         <div class="point"></div>
                     </div>
                 </div>
@@ -160,6 +156,6 @@
         <script src="/QuanLyChiTieu/history/create_new_project.js"></script>
         <script src="/QuanLyChiTieu/history/edit_project.js"></script>
         <script src="/QuanLyChiTieu/history/set_up_project.js"></script>
-         <script src="/QuanLyChiTieu/history/change_tab.js"></script>
+        <script src="/QuanLyChiTieu/history/change_tab.js"></script>
     </body>
 </html>

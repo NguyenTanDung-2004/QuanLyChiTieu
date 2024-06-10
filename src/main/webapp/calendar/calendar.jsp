@@ -75,11 +75,9 @@
                         <div class="point"></div>
                     </div>
                 </div>
-                <div class="dark_mode">
-                    <i class="fa-solid fa-moon"></i>
-                    <div class="button">
-                        <div id="point_button_darkmode"></div>
-                    </div>
+                <div class="log_out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="link">Log out</span>
                 </div>
             </div>
         </div>
@@ -199,5 +197,6 @@
         <script src="/QuanLyChiTieu/calendar/notify.js"></script>
         <script src="/QuanLyChiTieu/calendar/user_setting.js"></script>
         <script src="/QuanLyChiTieu/calendar/change_tab.js"></script>
+        <script src="/QuanLyChiTieu/calendar/logout.js"></script>
     </body>
 </html>

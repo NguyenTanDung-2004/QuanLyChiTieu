@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -239,5 +241,68 @@ public class intertact_with_item {
 	    return itemList;
 	}
 	
-	
+	//QA
+	//Get detail_item from project of user(table)
+		public ArrayList<ArrayList<String>> get_detail_items(int user_id, int project_id){
+			ArrayList<ArrayList<String>> detail = new ArrayList<ArrayList<String>>();
+			try {
+				String query = "SELECT i.info, i.money, i.date, i.type, ip.name FROM item i JOIN user_item iu ON iu.item_id = i.item_id JOIN parent_item ip ON ip.parent_item_id =  i.parent_item_id WHERE iu.user_id = ? AND iu.project_id = ?";
+				PreparedStatement statement = connect.prepareStatement(query);
+				statement.setInt(1, user_id);
+				statement.setInt(2, project_id);
+				ResultSet resultSet = statement.executeQuery();
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				 DecimalFormat decimalFormat = new DecimalFormat("#");
+				 
+				while(resultSet.next()) {
+					ArrayList<String> detail_1_item = new ArrayList<String>();
+					String infoItem = String.valueOf(resultSet.getString("info"));
+					String moneyItem = decimalFormat.format(resultSet.getFloat("money"));
+					String dateItem = dateFormat.format(resultSet.getDate("date"));
+					String typeItem = String.valueOf(resultSet.getString("type"));
+					String nameParentItem = String.valueOf(resultSet.getString("name"));
+					
+					detail_1_item.add(infoItem);
+					detail_1_item.add(moneyItem);
+					detail_1_item.add(dateItem);
+					detail_1_item.add(typeItem);
+					detail_1_item.add(nameParentItem);
+					
+					detail.add(detail_1_item);
+				}
+				 resultSet.close();
+			     statement.close();
+			}catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			return detail;
+		}
+		
+		//Sum money expense 
+		public float SumMoneyExpense(int user_id, int project_id) {
+			float sum = 0;
+			try {
+				 String query = "SELECT SUM(i.money) AS total_add_money " +
+	                     "FROM item i " +
+	                     "JOIN user_item ui ON i.item_id = ui.item_id " +
+	                     "WHERE ui.user_id = ? AND ui.project_id = ? AND i.type = 'add'";
+				PreparedStatement statement = connect.prepareStatement(query);
+				statement.setInt(1, user_id);
+				statement.setInt(2, project_id);
+				ResultSet resultSet = statement.executeQuery();
+				
+				if(resultSet.next())
+				{
+					sum = resultSet.getFloat("total_add_money");
+				}
+				
+				 resultSet.close();
+			     statement.close();
+			}catch (SQLException e) {
+	           e.printStackTrace();
+	       }
+			
+			return sum;
+		}
 }

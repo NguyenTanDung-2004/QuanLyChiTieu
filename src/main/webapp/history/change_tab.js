@@ -12,7 +12,7 @@ for (let i = 0; i < all_tab.length; i++){
 				window.location = "http://localhost:8080/QuanLyChiTieu/community"
 			]
 			else if (i == 3){
-				window.location = "http://localhost:8080/QuanLyChiTieu/history"
+				window.location = "http://localhost:8080/QuanLyChiTieu/history";
 			}
 		}
 	)

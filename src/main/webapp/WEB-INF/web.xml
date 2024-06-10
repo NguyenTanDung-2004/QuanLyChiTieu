@@ -88,7 +88,7 @@
  	<url-pattern>/servlet_handle_request_from_history</url-pattern>
  </servlet-mapping>
  
-  <!-- servlet_calendar -->
+   <!-- servlet_calendar -->
  <servlet>
  	<servlet-name>servlet_calendar</servlet-name>
  	<servlet-class>servlet.servlet_calendar</servlet-class>
@@ -106,5 +106,45 @@
  <servlet-mapping>
  	<servlet-name>servlet_calendar_receive_request</servlet-name>
  	<url-pattern>/servlet_calendar_receive_request</url-pattern>
+ </servlet-mapping>
+ 
+   <!-- QANH -->
+  <!-- servlet_report -->
+  <servlet>
+  	<servlet-name>servlet_report</servlet-name>
+ 	<servlet-class>servlet.servlet_report</servlet-class>
+  </servlet>
+   <servlet-mapping>
+ 	<servlet-name>servlet_report</servlet-name>
+ 	<url-pattern>/report</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- servlet_report -->
+ <servlet>
+  	<servlet-name>servlet_handle_request_from_report</servlet-name>
+ 	<servlet-class>servlet.servlet_handle_request_from_report</servlet-class>
+  </servlet>
+   <servlet-mapping>
+ 	<servlet-name>servlet_handle_request_from_report</servlet-name>
+ 	<url-pattern>/servlet_handle_request_from_report</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- servlet_community -->
+ <servlet>
+  	<servlet-name>servlet_community</servlet-name>
+ 	<servlet-class>servlet.servlet_community</servlet-class>
+  </servlet>
+   <servlet-mapping>
+ 	<servlet-name>servlet_community</servlet-name>
+ 	<url-pattern>/community</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  	<servlet-name>servlet_handle_request_from_community</servlet-name>
+ 	<servlet-class>servlet.servlet_handle_request_from_community</servlet-class>
+  </servlet>
+   <servlet-mapping>
+ 	<servlet-name>servlet_handle_request_from_community</servlet-name>
+ 	<url-pattern>/servlet_handle_request_from_community</url-pattern>
  </servlet-mapping>
 </web-app>

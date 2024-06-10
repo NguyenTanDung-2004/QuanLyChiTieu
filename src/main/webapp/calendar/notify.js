@@ -1,3 +1,4 @@
+
 // click notify
 const notify = document.querySelector('.notify');
 const notifyBadge = notify.querySelector('.notify-badge');

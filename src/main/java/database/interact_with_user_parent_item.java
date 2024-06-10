@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -203,4 +204,66 @@ public class interact_with_user_parent_item {
         } 
         return list;
 	}
+	
+	//QA
+	//Sum current_money in user_parent_item for chart
+		public float SumMoneyForChart(int user_id, int project_id) {
+			float sum =0;
+			try {
+				 String query = "SELECT SUM(current_total_money) AS total_current_money " +
+	                     "FROM user_parent_item " +
+	                     "WHERE user_id = ? AND project_id = ?";
+				PreparedStatement statement = connect.prepareStatement(query);
+				statement.setInt(1, user_id);
+				statement.setInt(2, project_id);
+				ResultSet resultSet = statement.executeQuery();
+				
+				if(resultSet.next())
+				{
+					sum = resultSet.getFloat("total_current_money");
+				}
+				
+				 resultSet.close();
+			     statement.close();
+			}catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			return sum;
+		}
+		
+		//Get detail parent_item for chart
+		public ArrayList<ArrayList<String>> get_max_parent_items(int user_id, int project_id){
+			ArrayList<ArrayList<String>> detail = new ArrayList<ArrayList<String>>();
+			try {
+				String query = "SELECT TOP 5 ui.parent_item_id, pi.name, ui.current_total_money " +
+	                    "FROM user_parent_item ui " +
+	                    "JOIN parent_item pi ON ui.parent_item_id = pi.parent_item_id " +
+	                    "WHERE ui.user_id = ? AND ui.project_id = ? " +
+	                    "ORDER BY ui.current_total_money DESC " ;
+				PreparedStatement statement = connect.prepareStatement(query);
+				statement.setInt(1, user_id);
+				statement.setInt(2, project_id);
+				ResultSet resultSet = statement.executeQuery();
+				
+				DecimalFormat decimalFormat = new DecimalFormat("#");
+				
+				while (resultSet.next()) {
+					ArrayList<String> detail_1_item = new ArrayList<String>();
+	                String parentItemId = String.valueOf(resultSet.getInt("parent_item_id"));
+	                String name = resultSet.getString("name");
+	                String currentTotalMoney = decimalFormat.format(resultSet.getFloat("current_total_money"));
+	                
+	                detail_1_item.add(parentItemId);
+					detail_1_item.add(name);
+					detail_1_item.add(currentTotalMoney);
+					
+					detail.add(detail_1_item);
+	            }
+				 resultSet.close();
+			     statement.close();
+			}catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			return detail;
+		}
 }

@@ -12,7 +12,7 @@ public class connect_database {
 	{
 		try {
 			DriverManager.registerDriver(new SQLServerDriver());
-			String url = "jdbc:sqlserver://localhost:1433;databaseName=cnpm;user=sa;password=12345;trustServerCertificate = true;";
+			String url = "jdbc:sqlserver://localhost:1433;databaseName=cnpm;user=sa;password=1234;trustServerCertificate = true;";
 			connect = DriverManager.getConnection(url);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -67,4 +67,30 @@ public class interact_with_notify {
             e.printStackTrace();
         }
 	}
+	
+	
+	// QA
+	// insert notify
+	
+	public void insertNotify(int user_id, int others_user_id, String date) {
+		try {
+			 String query = "INSERT INTO notify (user_id, others_user_id, date, flag) VALUES (?, ?, ?, ?)";
+			 PreparedStatement preparedStatement = connect.prepareStatement(query);
+			 
+			 preparedStatement.setInt(1, user_id);
+	            preparedStatement.setInt(2, others_user_id);
+	            preparedStatement.setString(3, date);
+	            preparedStatement.setInt(4, 1);
+	            // Thực thi câu truy vấn
+	            int rowsAffected = preparedStatement.executeUpdate();
+
+	            if (rowsAffected > 0) {
+	                System.out.println("Notify inserted successfully.");
+	            } else {
+	                System.out.println("Failed to insert notify.");
+	            }
+		}catch(Exception e){
+			System.out.println( e);
+		}
+	}
 }
