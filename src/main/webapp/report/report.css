@@ -109,32 +109,15 @@ body .left1 .tags .tag .tag1 .point{
 #icon_community{
     transform: translateX(-2px);
 }
-body .left1 .tags .dark_mode{
+body .left1 .tags .log_out {
     position: absolute;
-    bottom: 30px;
-    font-size: 30px;
+    bottom: 52px;
+    font-size: 25px;
     left: 22px;
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-body .left1 .tags .dark_mode .button{
-    height: 20px;
-    width: 55px;
-    border-radius: 10px;
-    background-color: var(--button-darkmode);
-    position: relative;
-}
-#point_button_darkmode{
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    background-color: var(--point-button-darkmode);
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+    gap: 11px;
     cursor: pointer;
-    transition: 0.3s;
 }
 /*right*/
 body .right1

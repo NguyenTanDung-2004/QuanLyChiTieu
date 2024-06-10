@@ -5,7 +5,7 @@ const notifyBadge = notify.querySelector('.notify-badge');
 
 notify.addEventListener('click', function() {
   notify.querySelector('.notify-container').classList.add('openFlex');
-  notifyBadge.style.display = 'none';
+  notifyBadge.style.display = 'flex';
    update_status_notify();
 });
 

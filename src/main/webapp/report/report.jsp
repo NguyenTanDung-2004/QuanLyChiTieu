@@ -20,23 +20,30 @@
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Madimi+One&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
     </head>
     <%
-	    NumberFormat numberFormat = NumberFormat.getInstance();
-	    numberFormat.setGroupingUsed(false);
-	    numberFormat.setMaximumFractionDigits(0);
-	    numberFormat.setMinimumFractionDigits(0);
-	
 	    ArrayList<String> detail_project = (ArrayList<String>) request.getAttribute("detail_project");
 	    ArrayList<ArrayList<String>> detail_item = (ArrayList<ArrayList<String>>) request.getAttribute("detail_item");
 	    ArrayList<ArrayList<String>> detail_parent_item = (ArrayList<ArrayList<String>>) request.getAttribute("detail_parent_item");
 	    float totalMoney1 = (float) request.getAttribute("totalMoney");
-	    String totalMoney = numberFormat.format(totalMoney1);
+	    String totalMoney = String.format("%.2f", totalMoney1);
     	float expenseMoney1 = (float)request.getAttribute("expenseMoney");
-    	String expenseMoney = numberFormat.format(expenseMoney1);
+    	String expenseMoney = String.format("%.2f", expenseMoney1);
     %>
     <%! 
     public String formatMoneyVND(String numberString) {
         if (numberString == null || numberString.isEmpty()) {
             return "0"; // Default to 0 if the string is empty or null
+        }
+
+        boolean isNegative = false;
+        if (numberString.startsWith("-")) {
+            isNegative = true;
+            numberString = numberString.substring(1);
+        }
+
+        // Remove the decimal part if any
+        int decimalIndex = numberString.indexOf(".");
+        if (decimalIndex != -1) {
+            numberString = numberString.substring(0, decimalIndex);
         }
 
         // Reverse iteration to add dots every three characters
@@ -47,12 +54,15 @@
             formatted.append(numberString.charAt(i));
             count++;
             if (count == 3 && i != 0) { // Add dot if count is 3 and it's not the last character
-                formatted.append('.');
+                formatted.append(".");
                 count = 0;
             }
         }
 
-        // Reverse back to the correct order
+        if (isNegative) {
+            formatted.append("-");
+        }
+
         return formatted.reverse().toString();
     }
     %>
@@ -88,11 +98,9 @@
                         <div class="point"></div>
                     </div>
                 </div>
-                <div class="dark_mode">
-                    <i class="fa-solid fa-moon"></i>
-                    <div class="button">
-                        <div id="point_button_darkmode"></div>
-                    </div>
+                <div class="log_out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="link">Log out</span>
                 </div>
             </div>
         </div>
@@ -189,13 +197,6 @@
 
 
                 <div class="main3">
-                    <div class="filter">
-                        <button>
-                            <p>Filter</p>
-                            <i class="fa-solid fa-filter"></i>
-                        </button>
-                    </div>
-    
                     <div class="tableItem">
                         <table class="detailActivities" border="0" cellspacing="0">
                             <thead>
@@ -239,7 +240,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="/QuanLyChiTieu/report/report.js"></script>
         <script src="/QuanLyChiTieu/report/change_tab.js"></script>
-        
+        <script src="/QuanLyChiTieu/report/logout.js"></script>
         
         <script>
         //CHART

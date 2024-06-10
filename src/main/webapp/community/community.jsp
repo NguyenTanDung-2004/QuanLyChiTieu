@@ -105,7 +105,7 @@
 						            <img src="<%=img1%>" alt="Avatar">
 						        </div>
 						        <div class="text">
-						            <span class="content"><%=name %> mentioned you in a comment</span>
+						            <span class="content1"><%=name %> mentioned you in a comment</span>
 						            <span class="date"><%=date %></span>
 						        </div>
 						    </div>
