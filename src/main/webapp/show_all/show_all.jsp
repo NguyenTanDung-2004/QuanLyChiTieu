@@ -1,5 +1,8 @@
 <%@page import="utils.convert_JavaObject_to_Json"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="database.interact_with_notify"%>
+<%@page import="database.interact_with_user"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <html>
@@ -18,6 +21,19 @@
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Madimi+One&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
     </head>
     <%
+	int id_user = (Integer) request.getSession().getAttribute("user_id");
+    
+	interact_with_user obj = new interact_with_user();
+	ArrayList<Object> info = obj.get_info_user(id_user);
+	
+	String username = (String) info.get(0);
+	String img = (String) info.get(1);
+	if (img == "") img = "/QuanLyChiTieu/img/default_avatar.png";
+	
+	
+   ArrayList<ArrayList<Object>> notifyList = interact_with_notify.get_list_notify(id_user,1);
+   int size_of_notify = notifyList.size();
+   
     	List<Integer> current_total_money_of_parent_item = (List)request.getAttribute("current_total_money_of_parent_item");
     	List<List<List<Object>>> all_data = (List<List<List<Object>>>)request.getAttribute("all_data");
     	List<String> date = (List<String>)request.getAttribute("date");
@@ -87,11 +103,9 @@
                         <div class="point"></div>
                     </div>
                 </div>
-                <div class="dark_mode">
-                    <i class="fa-solid fa-moon"></i>
-                    <div class="button">
-                        <div id="point_button_darkmode"></div>
-                    </div>
+                <div class="log_out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="link">Log out</span>
                 </div>
             </div>
         </div>
@@ -102,9 +116,46 @@
                     <p>Wish you have a good day!</p>
                 </div>
                 <div class="right">
-                    <i class="fa-regular fa-comment"></i>
-                    <i class="fa-solid fa-bell"></i>
-                    <i class="fa-regular fa-user"></i>
+                    <div class="notify">
+                        <i class="fa-solid fa-bell"></i>
+						<div class="notify-container">
+						    <%if (size_of_notify > 0) { %> 
+						    <% for (ArrayList<Object> notify : notifyList) {
+						        if (!notify.isEmpty()) { // Kiểm tra mảng notify có phần tử không
+						            String name = (String) notify.get(0);
+						            String img1 = (String) notify.get(1);
+						            String date123 = (String) notify.get(2);
+						            
+						            if (img1 == "") { // Kiểm tra mảng notify có ít nhất 2 phần tử
+						                img1 = "/QuanLyChiTieu/img/default_avatar.png";
+						            }
+						    %>
+						    <div class="notify-item">
+						        <div class="notify-item__avatar">
+						            <img src="<%=img1%>" alt="Avatar">
+						        </div>
+						        <div class="text">
+						            <span class="content"><%=name %> mentioned you in a comment</span>
+						            <span class="date"><%=date123 %></span>
+						        </div>
+						    </div>
+						    <% } }
+							} else {%>
+							<span class="no-notify" >You have no notifications.</span>
+							<% } %>
+						</div>
+						<%if (size_of_notify > 0) { %>
+	                        <div class="notify-badge">
+	                        <% String notify_number = "";
+	                           if (size_of_notify > 99) notify_number = "99+";
+	                           else notify_number = size_of_notify + "";%>
+	                            <span class="notify-badge__number"><%=notify_number %></span>
+	                        </div>
+	                    <%} %>
+	                    </div>
+                    <div class="avatar">
+                        <img  src="<%=img%>" alt="Avatar">
+                    </div>
                 </div>
             </div>
             <div class="title">
@@ -423,6 +474,23 @@
                 <button id="cancle">Cancel</button>
             </div>
         </div>
+                <div class="modal user-setting">
+            <div class="overlay"></div>
+            <div class="body">
+                <div class="btn-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <span class="title">User setting</span>
+                <div class="avatar-img">
+                    <img src="<%=img %>" alt="Avatar">
+                </div>
+                <div class="username">
+                    <span class="name">Username:</span>
+                    <input type="text" name="name" id="name" value="<%=username%>">
+                </div>
+                <button class="btn-save" id="save-info">SAVE</button>
+            </div>
+        </div>
         
         <script type="text/javascript">
         	var date_from_end = <%=convert_all_data_to_Json(date)%>;
@@ -435,5 +503,8 @@
         <script src="/QuanLyChiTieu/show_all/set_up_item.js"></script>
         <script src="/QuanLyChiTieu/show_all/click_setup_item.js"></script>
         <script src="/QuanLyChiTieu/show_all/change_tab.js"></script>
+        <script src="/QuanLyChiTieu/show_all/logout.js"></script>
+        <script src="/QuanLyChiTieu/show_all/notify.js"></script>
+        <script src="/QuanLyChiTieu/show_all/user_setting.js"></script>
     </body>
 </html>

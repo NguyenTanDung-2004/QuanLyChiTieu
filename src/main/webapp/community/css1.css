@@ -116,7 +116,6 @@ body .right1 .main{
     border-radius: 120px;
     height: 48px;
     width: 48px;
-    object-fit: cover;
 }
 .infoUser p{
     display:flex;
@@ -198,7 +197,7 @@ body .right1 .main{
     border-radius: 6px;
     height: 34px;
     width: 100%;
-    z-index: 0;
+    z-index: 1;
     font-size: 18px;
     padding-left: 10px;
 }

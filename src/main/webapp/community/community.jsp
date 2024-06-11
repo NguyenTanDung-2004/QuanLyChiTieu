@@ -25,7 +25,6 @@
     </head>
         <%
     	int id_user = (Integer) request.getSession().getAttribute("user_id");
-        int project_id = (Integer) request.getSession().getAttribute("project_id");
     
     	interact_with_user obj = new interact_with_user();
     	ArrayList<Object> info = obj.get_info_user(id_user);
@@ -34,8 +33,6 @@
     	String img = (String) info.get(1);
     	if (img == "") img = "/QuanLyChiTieu/img/default_avatar.png";
     	
-    	interact_with_project obj1 = new interact_with_project();
-    	String project_name = obj1.get_name_project(project_id);
     	
        ArrayList<ArrayList<Object>> notifyList = interact_with_notify.get_list_notify(id_user,1);
        int size_of_notify = notifyList.size();
@@ -85,7 +82,6 @@
                     <p>Wish you have a good day!</p>
                 </div>
                 <div class="right">
-                    <i class="fa-regular fa-comment"></i>
                     <div class="notify">
                         <i class="fa-solid fa-bell"></i>
 						<div class="notify-container">
@@ -147,7 +143,7 @@
              </div>
         </div>
         
-                <div class="modal user-setting">
+        <div class="modal user-setting">
             <div class="overlay"></div>
             <div class="body">
                 <div class="btn-close">
