@@ -19,6 +19,8 @@ for (let i = 0; i < all_tab.length; i++){
 }
 
 
+
+
 //QUỲNH ANH
 //Report appears
 function appear_report_sidebar(){
@@ -65,3 +67,12 @@ report.addEventListener("click", () =>
 		report_click();
 	}
 )
+
+var calendar_tag = document.querySelector("body .left1 .tags .tag .community");
+		calendar_tag.style.backgroundColor = "#F8F9F9";
+		var calendar_point = document.querySelector("body .left1 .tags .tag .community .point");
+		calendar_point.style.display = "block";
+		
+
+		
+		

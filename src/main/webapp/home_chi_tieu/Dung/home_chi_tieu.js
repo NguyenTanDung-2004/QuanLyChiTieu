@@ -16,20 +16,8 @@ function get_index_of_date(){
 	let mappedDay = dayMapping[dayOfWeek];
 	return mappedDay;
 }
-var point_button_darkmode = document.querySelector("#point_button_darkmode");
-var flag = 0;
-point_button_darkmode.addEventListener("click", () => 
-    {
-        if (flag == 0){
-            point_button_darkmode.style.transform = "translateX(31px)"
-            flag = 1;
-        }
-        else{
-            point_button_darkmode.style.transform = "translateX(0px)"
-            flag = 0;
-        }
-    }
-)
+
+
 
 // annimation cho các tags.
 

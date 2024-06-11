@@ -53,17 +53,10 @@
                         <p>History</p>
                         <div class="point"></div>
                     </div>
-                    <div class="Report tag1">
-                        <i class="fa-solid fa-clock"></i>
-                        <p>Report</p>
-                        <div class="point"></div>
-                    </div>
                 </div>
-                <div class="dark_mode">
-                    <i class="fa-solid fa-moon"></i>
-                    <div class="button">
-                        <div id="point_button_darkmode"></div>
-                    </div>
+                <div class="log_out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="link">Log out</span>
                 </div>
             </div>
         </div>
@@ -162,5 +155,6 @@
         <script src="/QuanLyChiTieu/history/edit_project.js"></script>
         <script src="/QuanLyChiTieu/history/set_up_project.js"></script>
          <script src="/QuanLyChiTieu/history/change_tab.js"></script>
+         <script src="/QuanLyChiTieu/history/logout.js"></script>
     </body>
 </html>

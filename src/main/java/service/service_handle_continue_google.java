@@ -14,17 +14,23 @@ public class service_handle_continue_google {
 		if (obj.check_email_exist(email) == 1) {
 			HttpSession session = req.getSession();
 			session.setAttribute("user_id", obj.get_id_user(email));
+			try {
+				resp.sendRedirect("http://localhost:8080/QuanLyChiTieu/home_chi_tieu");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else {
 			obj.insert_user(email, email);
 			HttpSession session = req.getSession();
 			session.setAttribute("user_id", obj.get_id_user(email));
-		}
-		try {
-			resp.sendRedirect("http://localhost:8080/QuanLyChiTieu/home_chi_tieu");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				resp.sendRedirect("http://localhost:8080/QuanLyChiTieu/home_chi_tieu");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

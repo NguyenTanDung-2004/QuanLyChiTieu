@@ -26,6 +26,16 @@ body{
     --shadow: #adb5bd;
     --color-border-chart: #baddff;
 }
+body .left1 .tags .log_out {
+    position: absolute;
+    bottom: 52px;
+    font-size: 25px;
+    left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer;
+}
 /*left1*/
 body .left1{
     min-height: 100vh;

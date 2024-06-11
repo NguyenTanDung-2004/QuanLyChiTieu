@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 *{
@@ -13,16 +12,6 @@ body{
     overflow-x: auto;
     height: 100vh;
     background-color: var(--point-button-darkmode);
-}
-body .left1 .tags .log_out {
-    position: absolute;
-    bottom: 52px;
-    font-size: 25px;
-    left: 22px;
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    cursor: pointer;
 }
 :root{
     --text-dashboard-color: black;
@@ -120,32 +109,15 @@ body .left1 .tags .tag .tag1 .point{
 #icon_community{
     transform: translateX(-2px);
 }
-body .left1 .tags .dark_mode{
+body .left1 .tags .log_out {
     position: absolute;
-    bottom: 30px;
-    font-size: 30px;
+    bottom: 52px;
+    font-size: 25px;
     left: 22px;
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-body .left1 .tags .dark_mode .button{
-    height: 20px;
-    width: 55px;
-    border-radius: 10px;
-    background-color: var(--button-darkmode);
-    position: relative;
-}
-#point_button_darkmode{
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    background-color: var(--point-button-darkmode);
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+    gap: 11px;
     cursor: pointer;
-    transition: 0.3s;
 }
 /*right*/
 body .right1
@@ -157,9 +129,8 @@ body .right1
     max-width: calc(100vw - 200px);
     background-color: var(--background-right);
     padding-left: 40px;
-    padding-right: 40px;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 0;
     position: relative;
 }
@@ -173,6 +144,7 @@ body .right1 .top{
     display: flex;
     padding-top: 20px;
     padding-left: 20px;
+    padding-right: 40px;
     justify-content: space-between;
 }
 body .right1 .top .right{
@@ -183,6 +155,10 @@ body .right1 .top .right{
     font-size: 25px;
     cursor: pointer;
 }
+
+
+/*tra giang*/
+
 body .right1 .top .right .avatar {
     width: 30px;
     height: 30px;
@@ -197,7 +173,6 @@ body .right1 .top .right .avatar {
     height: 100%;
     object-fit: cover;
   }
-
 /* notify */
 @keyframes headerNotifyGrowth {
     from {
@@ -296,7 +271,7 @@ body .right1 .top .right .avatar {
     flex-direction: column;
     gap: 3px;
 }
-.notify-item .content {
+.notify-item .content1 {
     font-size: 14px;
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
@@ -321,3 +296,110 @@ body .right1 .top .right .avatar {
     object-fit: cover;
 }
 /* notify */
+
+    /* user setting */
+@keyframes growth {
+      from {
+          transform: scale(var(--growth-from));
+      }
+      to {
+          transform: scale(var(--growth-to));
+      }
+}
+.openFlex {
+      display: flex !important;
+}
+.modal {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: none;
+      animation: fadeIn linear 0.1s;
+}
+.overlay {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+  }
+.modal .body {
+      max-width: 560px;
+      min-height: 350px;
+      width: 100%;
+      padding: 16px;
+      background-color: #fff;
+      margin: auto;
+      z-index: 1;
+      border-radius: 8px;
+      box-shadow: 2px 5px 5px rgba(0,0,0,0.25);
+      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      --growth-from: 0.7;
+      --growth-from: 1;
+      animation: growth linear 0.1s;
+}
+.modal.modal .title {
+    font-weight: bold;
+    color: #0B0964;
+    font-family: "Arial Black", Arial, sans-serif;
+    margin-top: -40px;
+    font-size: 20px;
+}
+.modal .body .btn-close {
+      cursor: pointer;
+      background-color: transparent;
+      margin-left: auto;
+      margin-top: -10px;
+}
+.modal .body .btn-close i {
+      padding: 0 4px; 
+      font-size: 32px;
+      font-weight: 600;
+}
+.modal .avatar-img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #0B0964;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+.modal .avatar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.modal .username .name {
+  margin-right: 16px;
+}
+.modal .username #name:not([readonly]) {
+    background-color: white; 
+    border: 1px solid #ccc; 
+    cursor: text; 
+    font-size: 16px;
+    max-width: 200px;
+    padding: 4px 6px;
+}
+.modal .btn-save {
+  padding: 10px 16px;
+  background-color: rgba(185, 182, 182, 0.632);
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: default;
+}
+  .modal .btn-save.active {
+    background-color: #b8def7;
+    box-shadow: 2px 5px 6px rgba(42, 86, 141, 0.2);
+    cursor: pointer;
+  }
+  .modal .btn-save.active:hover{
+    background-color: #1f5691;
+    color: #BADDFF;
+  }
+      /* user setting */

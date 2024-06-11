@@ -1,32 +1,29 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="database.interact_with_comment"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="database.interact_with_post"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.text.ParseException" %>
-<%@ page import="java.util.Date" %>
-<%@page import="java.lang.reflect.Array"%>
-<%@page import="java.util.List"%>
-<%@page import="utils.convert_JavaObject_to_Json"%>
-<%@page import="database.intertact_with_item"%>
 <%@page import="database.interact_with_notify"%>
 <%@page import="database.interact_with_user"%>
 <%@page import="database.interact_with_project"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home - Expense Management</title>
-        <link rel="stylesheet" href="/QuanLyChiTieu/calendar/css.css"/>
-        <link rel="stylesheet" href="/QuanLyChiTieu/calendar/css1.css"/>
+        <title>Community</title>
+        <link rel="stylesheet" href="/QuanLyChiTieu/community/css.css"/>
+        <link rel="stylesheet" href="/QuanLyChiTieu/community/css1.css"/>
         <!-- Unicons -->
         <link rel="stylesheet" href="/QuanLyChiTieu/fontawesome-free-6.5.1-web/css/fontawesome.css">
         <link rel="stylesheet" href="/QuanLyChiTieu/fontawesome-free-6.5.1-web/css/brands.css">
         <link rel="stylesheet" href="/QuanLyChiTieu/fontawesome-free-6.5.1-web/css/solid.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Madimi+One&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
     </head>
-    <%
+        <%
     	int id_user = (Integer) request.getSession().getAttribute("user_id");
         int project_id = (Integer) request.getSession().getAttribute("project_id");
     
@@ -88,6 +85,7 @@
                     <p>Wish you have a good day!</p>
                 </div>
                 <div class="right">
+                    <i class="fa-regular fa-comment"></i>
                     <div class="notify">
                         <i class="fa-solid fa-bell"></i>
 						<div class="notify-container">
@@ -107,7 +105,7 @@
 						            <img src="<%=img1%>" alt="Avatar">
 						        </div>
 						        <div class="text">
-						            <span class="content"><%=name %> mentioned you in a comment</span>
+						            <span class="content1"><%=name %> mentioned you in a comment</span>
 						            <span class="date"><%=date %></span>
 						        </div>
 						    </div>
@@ -130,45 +128,26 @@
                     </div>
                 </div>
             </div>
-            <div class="main" >
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                      <button class="prev-month">
-                        <i class="fa-solid fa-angle-left"></i>
-                      </button>
-                      <span class="month-year"></span>
-                      <button class="next-month">
-                        <i class="fa-solid fa-angle-right"></i>
-                      </button>
-                    </div>
-                    
-                    <div class="calendar-weekly">
-                      <span class="weekday">Sun</span>
-                      <span class="weekday">Mon</span>
-                      <span class="weekday">Tue</span>
-                      <span class="weekday">Wed</span>
-                      <span class="weekday">Thu</span>
-                      <span class="weekday">Fri</span>
-                      <span class="weekday">Sat</span>
-                    </div>
-                    
-                    <div class="calendar-grid">
+            <div class="main">
+                <div class="title">
+                    <p class="titleName">FORUM SHARING</p>
+                    <div class="titleTime">
+                        <!-- <i class="fa-solid fa-caret-left" id="prevDay"></i> -->
+                        <input id="date" type="date" lang="en">
+                        <!-- <i class="fa-solid fa-caret-right" id="nextDay"></i> -->
                     </div>
                 </div>
-        
-                <div class="activities">
-					<div class="project-name">Project name: <%=project_name%></div>
-                    <button id="add-expense">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                    <span class="selected-date"></span>
-                    <div class="list">  
-						
-					</div>
+                <div class="mainScroll" id="forumContent">
+                
                 </div>
             </div>
+            <div class="createParent">
+                    <input class="contentParent" type="text" placeholder="Write your question....">
+                    <i class="fa-regular fa-paper-plane" id="iconPost"></i>
+             </div>
         </div>
-        <div class="modal user-setting">
+        
+                <div class="modal user-setting">
             <div class="overlay"></div>
             <div class="body">
                 <div class="btn-close">
@@ -185,17 +164,18 @@
                 <button class="btn-save" id="save-info">SAVE</button>
             </div>
         </div>
-        <script type="text/javascript">
-			var calendar_tag = document.querySelector("body .left1 .tags .tag .calendar");
-			calendar_tag.style.backgroundColor = "#F8F9F9";
-			var calendar_point = document.querySelector("body .left1 .tags .tag .calendar .point");
-			calendar_point.style.display = "block";
-		</script>
-        <script src="/QuanLyChiTieu/calendar/calendar.js"></script>
-        <script src="/QuanLyChiTieu/calendar/create_calendar.js"></script>
-        <script src="/QuanLyChiTieu/calendar/notify.js"></script>
-        <script src="/QuanLyChiTieu/calendar/user_setting.js"></script>
-        <script src="/QuanLyChiTieu/calendar/change_tab.js"></script>
-        <script src="/QuanLyChiTieu/calendar/logout.js"></script>
+        	<script type="text/javascript">
+	        	var calendar_tag = document.querySelector("body .left1 .tags .tag .community");
+				calendar_tag.style.backgroundColor = "#F8F9F9";
+				var calendar_point = document.querySelector("body .left1 .tags .tag .community .point");
+				calendar_point.style.display = "block";
+        	</script>
+            <script src="/QuanLyChiTieu/community/change_tab.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script src="/QuanLyChiTieu/community/community.js"></script>
+            <script src="/QuanLyChiTieu/community/insert_post.js"></script>
+            <script src="/QuanLyChiTieu/community/logout.js"></script>
+            <script src="/QuanLyChiTieu/community/notify.js"></script>
+            <script src="/QuanLyChiTieu/community/user_setting.js"></script>
     </body>
 </html>
