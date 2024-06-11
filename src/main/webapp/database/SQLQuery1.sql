@@ -1,4 +1,4 @@
-﻿create database cnpm 
+﻿﻿create database cnpm 
 use cnpm 
 create table project (
 	project_id int not null primary key,
@@ -56,24 +56,25 @@ create table post(
 	post_id int not null primary key,
 	content nvarchar(max),
 	user_id int,
-	date smalldatetime,
-	numebr_of_likes int,
+	date nvarchar(max),
+	time nvarchar(max),
+	number_of_likes int,
 	constraint fk_user_id_in_post foreign key (user_id) references [user](user_id)
 )
 create table comment(
 	comment_id int not null primary key,
 	post_id int,
 	content nvarchar(max),
-	date smalldatetime,
+	date nvarchar(max),
+	time nvarchar(max),
 	user_id int,
-	parent_user_id int -- cái id này là cái id mà thằng comment nó trả lời, nếu nó comment mà không tag ai thì có nghĩa là null
+	parent_user_id int -- cái id này là cái id mà th?ng comment nó tr? l?i, n?u nó comment mà không tag ai thì có ngh?a là null
 	constraint fk_user_id_in_comment foreign key (user_id) references [user](user_id),
 	constraint fk_user_id_in_comment1 foreign key (parent_user_id) references [user](user_id)
 )
-create table user_like_post_or_comment(
+create table user_like_post(
 	user_id int not null,
-	post_id int not null, -- nếu như user_id like post thì nhét cái post_id voo ddaay
-	comment_id int not null, -- nếu như user_id like cái comment thì nhét cái comment_id vô đây.
+	post_id int not null, -- n?u nh? user_id like post thì nhét cái post_id voo ddaay
 )
 
 -- add data cho parent item
