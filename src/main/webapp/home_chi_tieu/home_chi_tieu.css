@@ -537,10 +537,20 @@ body .create_project_box .child_create_project_box .input{
     border: none;
     border-bottom: 1px solid black;
     outline: none;
-    font-family: "Sanchez", serif;
+    font-family: "Sanchez", serif;	
     font-size: 18px;
     padding-left: 10px;
 }
 body .create_project_box .money input{
     width: 150px; 
+}
+
+#abcd{
+	transform: translateY(10px);
+}
+body > div.right1 > div.main > div.left > div.current_money > div.top > div.left{
+	transform: translateX(-30px);
+}
+body > div.right1 > div.main > div.left > div.current_money > div.top > div.right{
+	flex: 2;
 }

@@ -126,15 +126,18 @@
 									    if (request.getSession().getAttribute("project_id") != null) {
 									%>
 									    <p>
-									        <%= formatMoneyVND(max_and_current_money.get(0).toString()) %> /
+									        <%= formatMoneyVND(max_and_current_money.get(0).toString()) %> 
 									    </p>
+									    <P id="abcd">
+									    	/
+									    </P>
 									<%
 									    }
 									%>
                                     <%
 									    if (request.getSession().getAttribute("project_id") != null) {
 									%>
-									    <p>
+									    <p id="abcd">
 									        <%= formatMoneyVND(max_and_current_money.get(1).toString()) + " VND" %> 
 									    </p>
 									<%
