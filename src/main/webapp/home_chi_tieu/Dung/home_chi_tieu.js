@@ -53,14 +53,27 @@ for (let i = 0; i < columns.length; i++){
 
 // annimation chuyen hinh anh.
 var img_array = [
-    "../img/image_event/cash-exp.webp",
-    "../img/image_event/Best-Expense-Tracker-App-That-You-Must-Use-1.jpg",
-    "../img/image_event/20191225043221-00000735-expensemanager-cropped.png",
-    "../img/image_event/Ways-to-Manage-Your-Business-Expenses-Better-2.jpg",
-    "../img/image_event/Why-Expense-Management-Software-is-a-good-automation-tool.jpg"
+    "../QuanLyChiTieu/img/image_event/cash-exp.webp",
+    "../QuanLyChiTieu/img/image_event/Best-Expense-Tracker-App-That-You-Must-Use-1.jpg",
+    "../QuanLyChiTieu/img/image_event/20191225043221-00000735-expensemanager-cropped.png",
+    "../QuanLyChiTieu/img/image_event/Ways-to-Manage-Your-Business-Expenses-Better-2.jpg",
+    "../QuanLyChiTieu/img/image_event/Why-Expense-Management-Software-is-a-good-automation-tool.jpg"
 ];
+var link_array = [
+		"https://www.investopedia.com/terms/p/personalfinance.asp",
+		"https://www.thebalancemoney.com/ways-to-be-better-with-money-960664",
+		"https://www.bing.com/search?q=5+Ways+to+Manage+Your+Personal+Finances&cvid=110f891495984b73b8e1e437263b35b6&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQ6QcY_FXSAQczODNqMGo5qAIIsAIB&FORM=ANAB01&adppc=EDGEESS&PC=LCTS",
+		"https://www.investopedia.com/terms/p/personal-spending-plan.asp",
+		"https://suitsmecard.com/blog/9-essential-rules-of-personal-finance-that-you-should-follow#:~:text=9%20Essential%20Rules%20of%20Personal%20Finance%20That%20You,Work%20on%20Fixing%20Your%20Credit%20Score%20More%20items"
+	];
     //lấy ra event-img
 var event_img = document.querySelector("#event-img");
+var index_to_change_image = 0;
+event_img.addEventListener("click", () => 
+	{
+		window.location = link_array[index_to_change_image];
+	}
+)
 document.addEventListener("DOMContentLoaded", function () {
     function applyAnimation(index) {
         setTimeout(function () {
@@ -74,9 +87,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 event_img.style.backgroundSize = "cover";
                 setTimeout(function () {
                     applyAnimation(0);
-                }, 0); // Delay before restarting the animation
+                }
+                , 0); // Delay before restarting the animation
             }
-        }, 10000); // Duration of animation in milliseconds (same as animation-duration)
+            index_to_change_image = index
+        }, 4000); // Duration of animation in milliseconds (same as animation-duration)
     }
 
     applyAnimation(0); // Start the animation with the first element

@@ -14,7 +14,10 @@ public class servlet_report extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		
+		if (session.getAttribute("project_id") == null) {
+			resp.sendRedirect("http://localhost:8080/QuanLyChiTieu/home_chi_tieu");
+			return;
+		}
     	req.setCharacterEncoding("UTF-8");
     	resp.setCharacterEncoding("UTF-8");
 		
