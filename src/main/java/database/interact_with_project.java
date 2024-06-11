@@ -177,4 +177,24 @@ public class interact_with_project {
 		    } 
 		 return result;
 	}
+	
+	
+	//giang
+	public String get_name_project(int project_id) {
+		String name = "";
+		 try {
+		        Statement statement = connect.createStatement();
+		        String sql = "select name from project where project_id = " + project_id;
+		        ResultSet resultSet = statement.executeQuery(sql);
+		        if (resultSet.next()) {
+		        	name = resultSet.getString(1);
+		        }
+		        resultSet.close();
+		        statement.close();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+		 return name;
+	}
+	//giang
 }

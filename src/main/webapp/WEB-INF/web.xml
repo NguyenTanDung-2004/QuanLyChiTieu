@@ -87,4 +87,24 @@
  	<servlet-name>servlet_handle_request_from_history</servlet-name>
  	<url-pattern>/servlet_handle_request_from_history</url-pattern>
  </servlet-mapping>
+ 
+  <!-- servlet_calendar -->
+ <servlet>
+ 	<servlet-name>servlet_calendar</servlet-name>
+ 	<servlet-class>servlet.servlet_calendar</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>servlet_calendar</servlet-name>
+ 	<url-pattern>/calendar</url-pattern>
+ </servlet-mapping>
+ 
+   <!-- servlet_calendar_receive_request -->
+ <servlet>
+ 	<servlet-name>servlet_calendar_receive_request</servlet-name>
+ 	<servlet-class>servlet.servlet_calendar_receive_request</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>servlet_calendar_receive_request</servlet-name>
+ 	<url-pattern>/servlet_calendar_receive_request</url-pattern>
+ </servlet-mapping>
 </web-app>

@@ -21,6 +21,7 @@
     	List<Integer> current_total_money_of_parent_item = (List)request.getAttribute("current_total_money_of_parent_item");
     	List<List<List<Object>>> all_data = (List<List<List<Object>>>)request.getAttribute("all_data");
     	List<String> date = (List<String>)request.getAttribute("date");
+    	response.setCharacterEncoding("UTF-8");
     %>
     <%!
     public String formatMoneyVND(String numberString) {
@@ -425,6 +426,7 @@
         
         <script type="text/javascript">
         	var date_from_end = <%=convert_all_data_to_Json(date)%>;
+        	console.log(date_from_end);
         	var all_data = <%=convert_all_data_to_Json(all_data)%>;
         </script>
 

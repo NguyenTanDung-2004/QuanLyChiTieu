@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import utils.handle_date;
 
@@ -150,4 +152,92 @@ public class intertact_with_item {
 		}
 		return list;
 	}
+	public static String get_total_money_of_date(int id_user, String date, int project_id) {
+		  float totalMoney = 0;
+
+		  connect_database connection = new connect_database();
+		  connection.connect_to_database();
+
+		  try {
+		        String query = "SELECT SUM(CASE WHEN type = 'add' THEN money ELSE -money END) AS total_money FROM item " +
+		                "JOIN user_item ON item.item_id = user_item.item_id " +
+		                "WHERE user_item.user_id = ? AND item.date = ? AND user_item.project_id = ?";
+		        PreparedStatement statement = connection.connect.prepareStatement(query);
+		        statement.setInt(1, id_user);
+		        statement.setString(2, date);
+	            statement.setInt(3, project_id);
+	            
+		        ResultSet resultSet = statement.executeQuery();
+		        if (resultSet.next()) {
+		            totalMoney = resultSet.getFloat("total_money");
+		        }
+		    resultSet.close();
+		  } catch (SQLException e) {
+		    e.printStackTrace();
+		  } finally {
+		    try {
+		      connection.connect.close();
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		    }
+		  }
+
+          NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+          String moneyString = numberFormat.format(totalMoney);
+		  return moneyString;
+		}
+	
+	public static ArrayList<ArrayList<Object>> get_list_item_of_date(int id_user, String date, int project_id) {
+	    ArrayList<ArrayList<Object>> itemList = new ArrayList<>();
+
+	    connect_database connection = new connect_database();
+	    connection.connect_to_database();
+
+	    try {
+	        String query = "SELECT parent_item.name, item.info, item.money, item.type FROM item " +
+	                "JOIN user_item ON item.item_id = user_item.item_id " +
+	                "JOIN parent_item ON item.parent_item_id = parent_item.parent_item_id " +
+	                "WHERE user_item.user_id = ? AND item.date = ? AND user_item.project_id = ?";
+	        PreparedStatement statement = connection.connect.prepareStatement(query);
+	        statement.setInt(1, id_user);
+	        statement.setString(2, date);
+	        statement.setInt(3, project_id);
+
+	        ResultSet resultSet = statement.executeQuery();
+	        while (resultSet.next()) {
+	            String itemName = resultSet.getString("name");
+	            String itemInfo = resultSet.getString("info");
+	            float itemMoney = resultSet.getFloat("money");
+	            String itemType = resultSet.getString("type");
+	            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+	            String moneyString = numberFormat.format(itemMoney);
+
+	            if ("add".equals(itemType)) {
+	                moneyString = "+ " + moneyString;
+	            } else {
+	                moneyString = "- " + moneyString;
+	            }
+
+	            ArrayList<Object> item = new ArrayList<>();
+	            item.add(itemName);
+	            item.add(itemInfo);
+	            item.add(moneyString);
+
+	            itemList.add(item);
+	        }
+	        resultSet.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            connection.connect.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return itemList;
+	}
+	
+	
 }

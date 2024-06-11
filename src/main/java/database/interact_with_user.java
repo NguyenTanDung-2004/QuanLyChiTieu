@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 import database.*;
 
@@ -128,5 +130,41 @@ public class interact_with_user {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+	    }
+	 
+	    public  ArrayList<Object> get_info_user(int id_user) {
+	    	ArrayList<Object> info = new ArrayList<Object>();
+	    	
+	        try {
+	            Statement statement = connect.createStatement();
+	            String sql = "select name,  img from [user] where user_id = " + id_user;
+	            ResultSet resultSet = statement.executeQuery(sql);
+
+	            while (resultSet.next()) {
+	                String name = resultSet.getString("name");
+	                String img  = resultSet.getString("img");
+	                
+	                info.add(name);
+	                info.add((img != null) ? img :  "");
+	            }
+	            resultSet.close();
+	            statement.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } 
+	        return info;
+	    }
+	    public  void  update_info_user(int id_user, String name, String img) {
+	    	  try {
+	      	    PreparedStatement statement = connect.prepareStatement("UPDATE [user] SET name = ?, img = ? WHERE user_id = ?");
+	      	    statement.setString(1, name);
+	      	    statement.setString(2, img);
+	      	    statement.setInt(3, id_user);
+	      	    statement.executeUpdate();
+
+	      	    statement.close();
+	      	  } catch (SQLException e) {
+	      	    e.printStackTrace();
+	      	  }
 	    }
 }
