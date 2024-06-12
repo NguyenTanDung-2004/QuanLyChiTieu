@@ -403,7 +403,7 @@ td img{
 }
 .detailActivities tbody {
     display: block;
-    height:100%; /* Set the height you want */
+    height:83%; /* Set the height you want */
     overflow-y: auto;
 }
 .detailActivities tbody tr {
